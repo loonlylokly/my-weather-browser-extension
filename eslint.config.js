@@ -1,28 +1,48 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+// eslint.config.js
+import antfu from '@antfu/eslint-config';
+import pluginSimpleImportSort from 'eslint-plugin-simple-import-sort';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default antfu(
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
+    stylistic: false
+  },
+  {
+    name: 'my/rewrite',
+    rules: {
+      'antfu/top-level-function': 'off',
+      'antfu/if-newline': 'off',
+      'antfu/curly': 'off',
+
+      'react-hooks/exhaustive-deps': 'off',
+
+      'test/prefer-lowercase-title': 'off',
+
+      'no-console': 'warn'
+    }
+  },
+  {
+    name: 'my/imports',
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      'plugin-simple-import-sort': pluginSimpleImportSort
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-    },
-  },
-)
+      'sort-imports': 'off',
+      'import/order': 'off',
+      'import/extensions': 'off',
+      'plugin-simple-import-sort/exports': 'error',
+      'plugin-simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^react', '^@?\\w'],
+            ['^@(([\\/.]?\\w)|assets|test-utils)'],
+            ['^\\u0000'],
+            ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+            ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+            ['^.+\\.s?css$']
+          ]
+        }
+      ]
+    }
+  }
+);
