@@ -1,3 +1,24 @@
-div {
-  color: red;
+.weather_btn {
+  background: red;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.anchorWeather {
+  border: 1px solid;
+  padding: 1rem;
+  position: absolute;
+  width: fit-content;
+  max-width: 230px;
+  margin-inline-start: -200px;
+  display: none;
+  background-color: rgb(216, 216, 216);
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid black;
+}
+
+.open {
+  display: block;
 }

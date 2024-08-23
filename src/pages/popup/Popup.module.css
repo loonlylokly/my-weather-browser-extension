@@ -1,0 +1,19 @@
+.title {
+  text-align: center;
+}
+
+.select_wrap {
+  display: grid;
+  place-items: center;
+  gap: 16px;
+}
+
+.select {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.temperature {
+  font-size: 18px;
+  font-weight: 500;
+}

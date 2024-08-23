@@ -1,0 +1,10 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "My Weather Extension for Chrome. Developed with Vite, React and Typescript"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "My Weather Extension"
+  }
+}
